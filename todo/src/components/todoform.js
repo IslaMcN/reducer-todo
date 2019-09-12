@@ -15,7 +15,7 @@ export default function TodoForm(props){
         props.clearCompleted();
     }
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input type="text"
             name="todo"
             value={input}

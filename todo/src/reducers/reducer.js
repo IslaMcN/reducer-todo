@@ -10,7 +10,7 @@ todos:[
 // Initial count is established
 
 // We will use the same reducer we created in the previous section
-export function reducer(state = initialState, action) {
+export function reducer(state, action) {
   switch (action.type) {
     case 'ADD_TODO':
       return {
@@ -26,14 +26,18 @@ export function reducer(state = initialState, action) {
     case 'COMPLETED_TODO':
       return {
         ...state,
-        todos: state.todos.map(todo => todo.id === action.payload ? {...todo, completed: !todo.completed} : todo)
+        todos: state.todos.map(todo => todo.id === action.id ? {...todo, completed: !todo.completed} : todo)
       };
     case "CLEAR_COMPLETED":
       return{
         ...state,
         todos: state.todos.filter(todo => !todo.completed)
       };
-
+    case 'UPDATE_TODO':
+      return {
+        ...state,
+        todos: state.todos.map(todo => todo.id === action.payload.id ? {...todo, task: action.payload.task} : todo)
+      }
     default:
       return state
   }
