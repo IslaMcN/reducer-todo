@@ -13,17 +13,24 @@ todos:[
 export function reducer(state, action) {
   switch (action.type) {
     case 'ADD_TODO':
-      return [
+      return {
         ...state,
-        {
-            item: action.text,
-            completed: false,
-            id: action.id
-        }
-      ]
-    case 'REMOVE_TODO':
-      return state.map(todo =>
-        todo.id === action.id ? {...todo, completed: !todo.completed } : todo )
+        todos:[
+          ...state.todos,
+        
+        {task:action.payload,
+        id: Date.now(),
+        completed:false}
+        ]
+      }
+    case 'COMPLETED_TODO':
+      return {
+        ...state,
+        todos: state.todos.map(todo => todo.id === action.payload ? {...todo, completed: !todo.completed} : todo)
+      };
+    case "CLEAR_COMPLETED":
+      return{};
+
     default:
       return state
   }
