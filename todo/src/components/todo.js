@@ -2,7 +2,7 @@ import React, {useReducer} from 'react';
 import {initialState, reducer} from '../reducers/reducer';
 
 // Create a functional component
-function Todo() {
+function Todo({ onClick, completed, text}) {
   // Use the useReducer hook by destructuring its two properties: state, and dispatch and pass in the reducer and the initialState to the useReducer function
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -14,8 +14,18 @@ function Todo() {
       <div className="count">
           Todo: <input />
       </div>
+      <li 
+      onClick={onClick}
+      style={{
+          textDecoration: completed ? 'line-through' : 'none'
+      }}
+      >
+          {text}
+      </li>
       <button onClick={() => dispatch({ type: 'ADD_TODO' })}>+</button>
       <button onClick={() => dispatch({ type: 'REMOVE_TODO' })}>-</button>
     </>
   )
 }
+
+export default Todo;

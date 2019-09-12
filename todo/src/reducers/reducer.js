@@ -19,8 +19,9 @@ export function reducer(state = [], action) {
             id: action.id
         }
       ]
-    case 'DECREASE':
-      return { count: state.count - 1 }
+    case 'REMOVE_TODO':
+      return state.map(todo =>
+        todo.id === action.id ? {...todo, completed: !todo.completed } : todo )
     default:
       return state
   }
