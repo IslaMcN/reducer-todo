@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Todo from './Todo'
+import Todo from './todo'
 
 const TodoList = (props) => {
   return(
     <>
-    {props.todos.map(todo =>  <Todo todo={todo} />)};
+    {props.todos.map(todo =>  <Todo todo={todo} completed={props.completed} />)};
     </>
   )}
 

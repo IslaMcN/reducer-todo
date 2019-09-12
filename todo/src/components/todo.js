@@ -12,6 +12,7 @@ function Todo(props) {
     <>
       {/* Note, we have access to the current state and the dispatch method from the useReducer hook, so we can utilize them to display the count as well as couple the dispatching of the actions from the appropriate buttons.*/}
       <h1>{props.todo.task}</h1>
+      <button onClick={props.completed(props.todo.id)}>Done!</button>
     </>
   )
 }
