@@ -10,10 +10,11 @@ const App = () => {
   const completed = id => dispatch({type: "COMPLETED_TODO",
   id: id });
   const clear = () => dispatch({type: "CLEAR_COMPLETED"});
+  const updateTodo= (task, id) => dispatch({type: 'UPDATE_TODO', payload: { task, id}});
   return(
   <div>
-    <TodoForm />
-    <TodoList todos={state.todos} completed={completed}/>
+    <TodoForm addTodo={addTodo} clear={clear}/>
+    <TodoList todos={state.todos} completed={completed} updateTodo={updateTodo}/>
     
   </div>);}
 

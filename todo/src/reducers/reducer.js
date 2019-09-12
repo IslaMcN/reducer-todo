@@ -10,7 +10,7 @@ todos:[
 // Initial count is established
 
 // We will use the same reducer we created in the previous section
-export function reducer(state, action) {
+export function reducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_TODO':
       return {
